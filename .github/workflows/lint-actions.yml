@@ -1,0 +1,32 @@
+name: Lint GitHub Actions
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '.github/workflows/*.yml'
+      - '.github/workflows/*.yaml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - '.github/workflows/*.yml'
+      - '.github/workflows/*.yaml'
+
+jobs:
+  actionlint:
+    name: Validate workflows
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install actionlint
+        run: |
+          curl -sSLO "https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64.tar.gz"
+          tar -xzf actionlint_linux_amd64.tar.gz
+          sudo mv actionlint /usr/local/bin/
+          actionlint --version
+
+      - name: Run actionlint
+        run: |
+          actionlint .github/workflows/*.yml .github/workflows/*.yaml

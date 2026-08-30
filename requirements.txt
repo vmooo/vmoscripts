@@ -1,0 +1,6 @@
+requests==2.31.0
+flake8
+pytest
+numpy
+bandit
+pip-audit

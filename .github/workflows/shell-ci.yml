@@ -1,0 +1,21 @@
+name: Shell CI
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '**.sh'
+      - '**.bash'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - '**.sh'
+      - '**.bash'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ShellCheck
+        run: shellcheck scripts/*.sh
