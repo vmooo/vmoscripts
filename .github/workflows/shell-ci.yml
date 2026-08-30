@@ -5,12 +5,10 @@ on:
     branches: [ main, master ]
     paths:
       - '**.sh'
-      - '**.bash'
   pull_request:
     branches: [ main, master ]
     paths:
       - '**.sh'
-      - '**.bash'
 
 jobs:
   lint:
@@ -18,4 +16,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run ShellCheck
-        run: shellcheck scripts/*.sh
+        run: |
+          find . -type f -name "*.sh" -exec shellcheck {} +
