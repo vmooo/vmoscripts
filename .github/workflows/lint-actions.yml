@@ -23,4 +23,4 @@ jobs:
       - name: Lint workflows
         uses: rhysd/actionlint@v1.7.7
         with:
-          args: .github/workflows/*.yml
+          args: .github/workflows/
