@@ -1,10 +1,7 @@
-
-#!/usr/bin/env python3
-
 import requests
-import json
 import sys
 from datetime import datetime
+
 
 def get_location_by_ip():
     try:
@@ -22,6 +19,7 @@ def get_location_by_ip():
         print(f"Failed to determine location: {e}")
         return None, None, None, None
 
+
 def get_weather(city):
     try:
         url = f'https://wttr.in/{city}?0T&m&lang=en'
@@ -34,11 +32,13 @@ def get_weather(city):
         print(f"Error fetching weather: {e}")
         return None
 
+
 def print_header(city, country):
     print("\n" + "=" * 50)
     print(f"   Weather in {city}, {country}")
     print(f"   {datetime.now().strftime('%A, %d %B %Y %H:%M')}")
     print("=" * 50 + "\n")
+
 
 def main():
     print("Detecting your location...")
@@ -55,9 +55,10 @@ def main():
     if weather_output:
         print(weather_output)
     else:
-        print("Could not retrieve weather data. Check your internet connection.")
+        print("Could not retrieve weather data.")
+        print(" Check your internet connection.")
         sys.exit(1)
-        
+
 
 if __name__ == "__main__":
     main()
