@@ -57,6 +57,7 @@ def main():
     else:
         print("Could not retrieve weather data. Check your internet connection.")
         sys.exit(1)
+        
 
 if __name__ == "__main__":
     main()
