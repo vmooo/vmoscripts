@@ -37,7 +37,7 @@ def main() -> int:
 
     total = len(lines)
     print(f"Loaded {total} lines. ")
-    print(f"Press Enter to show the next one (Ctrl+C to quit).\n")
+    print("Press Enter to show the next one (Ctrl+C to quit).\n")
 
     try:
         for i, line in enumerate(lines, start=1):
